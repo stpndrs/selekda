@@ -2,7 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Blog;
+use App\Models\BlogTag;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Validator;
+use Laravel\Sanctum\PersonalAccessToken;
 
 class BlogController extends Controller
 {
@@ -11,7 +16,9 @@ class BlogController extends Controller
      */
     public function index()
     {
-        //
+        $blogs = Blog::all();
+
+        return $this->success(['blogs' => $blogs], 200);
     }
 
     /**
@@ -19,15 +26,42 @@ class BlogController extends Controller
      */
     public function store(Request $request)
     {
-        //
-    }
+        $validate = Validator::make($request->all(), [
+            'title' => 'required',
+            'image' => 'required|image',
+            'description' => 'required',
+            'tags' => 'array'
+        ]);
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
+        if ($validate->fails()) return $this->validateRes($validate->errors());
+
+        $findToken = PersonalAccessToken::findToken($request->bearerToken());
+        $user = $findToken->tokenable;
+
+        $extension = $request->file('image')->getClientOriginalExtension();
+        $image = time() . '.' . $extension;
+        $path = 'public/blogs';
+
+        $request->file('image')->storeAs(
+            $path,
+            $image
+        );
+
+        $blog = Blog::create([
+            'title' => $request->title,
+            'image' => $path . '/' . $image,
+            'description' => $request->description,
+            'author_id' => $request->author,
+        ]);
+
+        foreach ($request->tags as $tag) {
+            $tag['tag_id'] = $tag;
+            $tag['blog_id'] = $blog->id;
+
+            BlogTag::create($tag);
+        }
+
+        return $this->success(['message' => 'Blog successfully created'], 201);
     }
 
     /**
@@ -35,7 +69,55 @@ class BlogController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $blog = Blog::find($id);
+
+        if (!$blog) return $this->notfound(['message' => 'Blog not found']);
+
+        $validate = Validator::make($request->all(), [
+            'title' => 'required',
+            'image' => 'required|image',
+            'description' => 'required',
+            'status' => 'boolean'
+        ]);
+
+        if ($validate->fails()) return $this->validateRes($validate->errors());
+
+        $bannerImg = $blog->image;
+
+        if ($request->hasFile('image')) {
+            Storage::delete($blog->image);
+
+            $extension = $request->file('image')->getClientOriginalExtension();
+            $image = time() . '.' . $extension;
+            $path = 'public/blog';
+
+            $request->file('image')->storeAs(
+                $path,
+                $image
+            );
+
+            $bannerImg = $path . '/' . $image;
+        }
+
+        foreach ($blog->tags as $tag) {
+            $tag->delete();
+        }
+
+        foreach ($request->tags as $tag) {
+            $tag['tag_id'] = $tag;
+            $tag['blog_id'] = $blog->id;
+
+            BlogTag::create($tag);
+        }
+
+        $blog->update([
+            'title' => $request->title,
+            'image' => $bannerImg,
+            'description' => $request->description,
+            'author_id' => $request->author,
+        ]);
+
+        return $this->success(['message' => 'Blog successfully updated'], 201);
     }
 
     /**
@@ -43,6 +125,18 @@ class BlogController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $blog = Blog::find($id);
+
+        if (!$blog) return $this->notfound(['message' => 'Blog not found']);
+
+        foreach ($blog->tags as $tag) {
+            $tag->delete();
+        }
+
+        Storage::delete($blog->image);
+
+        $blog->delete();
+
+        return $this->success([], 204);
     }
 }

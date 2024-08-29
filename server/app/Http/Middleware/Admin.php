@@ -26,10 +26,9 @@ class Admin
         $user = $findToken->tokenable;
 
         if ($user && $user instanceof User) {
-            $level = $user->level; // Asumsikan ada kolom 'level' pada tabel users
-            // Lakukan sesuatu dengan level, misalnya:
-            if ($level != 1) { // Misalnya hanya user dengan level >= 5 yang diizinkan
-                return response()->json(['message' => 'Forbidden'], 403);
+            $level = $user->level;
+            if ($level != 1) { 
+                return response()->json(['message' => 'Forbidden Access'], 403);
             }
         } else {
             return response()->json(['message' => 'Unauthenticated'], 404);
