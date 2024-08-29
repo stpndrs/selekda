@@ -21,6 +21,15 @@ class BlogController extends Controller
         return $this->success(['blogs' => $blogs], 200);
     }
 
+    public function show($id)
+    {
+        $blog = Blog::with(['author', 'comments'])->whereId($id)->first();
+
+        if (!$blog) return $this->notfound(['message' => 'Blog not found']);
+
+        return $this->success(['blog' => $blog], 200);
+    }
+
     /**
      * Store a newly created resource in storage.
      */
@@ -49,17 +58,20 @@ class BlogController extends Controller
 
         $blog = Blog::create([
             'title' => $request->title,
-            'image' => 'blogs/' . $image,
+            'image' => 'storage/blogs/' . $image,
             'description' => $request->description,
             'author_id' => $request->author,
         ]);
 
-        foreach ($request->tags as $tag) {
-            $tag['tag_id'] = $tag;
-            $tag['blog_id'] = $blog->id;
+        if ($request->tags) {
+            foreach ($request->tags as $tag) {
+                $tag['tag_id'] = $tag;
+                $tag['blog_id'] = $blog->id;
 
-            BlogTag::create($tag);
+                BlogTag::create($tag);
+            }
         }
+
 
         return $this->success(['message' => 'Blog successfully created'], 201);
     }
@@ -85,7 +97,9 @@ class BlogController extends Controller
         $bannerImg = $blog->image;
 
         if ($request->hasFile('image')) {
-            Storage::delete($blog->image);
+            $path = str_replace('storage/', '', $blog->image);
+            Storage::delete('public/' . $path);
+
 
             $extension = $request->file('image')->getClientOriginalExtension();
             $image = time() . '.' . $extension;
@@ -96,7 +110,7 @@ class BlogController extends Controller
                 $image
             );
 
-            $bannerImg = 'blogs/' . $image;
+            $bannerImg = 'storage/blogs/' . $image;
         }
 
         foreach ($blog->tags as $tag) {
@@ -129,11 +143,15 @@ class BlogController extends Controller
 
         if (!$blog) return $this->notfound(['message' => 'Blog not found']);
 
-        foreach ($blog->tags as $tag) {
-            $tag->delete();
+        if ($blog->tags) {
+            foreach ($blog->tags as $tag) {
+                $tag->delete();
+            }
         }
 
-        Storage::delete($blog->image);
+        $path = str_replace('storage/', '', $blog->image);
+        Storage::delete('public/' . $path);
+
 
         $blog->delete();
 

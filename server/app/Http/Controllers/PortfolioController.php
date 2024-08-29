@@ -20,6 +20,15 @@ class PortfolioController extends Controller
         return $this->success(['portfolios' => $portfolios], 200);
     }
 
+    public function show($id)
+    {
+        $portfolio = Portfolio::with('author')->whereId($id)->first();
+
+        if (!$portfolio) return $this->notfound(['message' => 'Portfolio not found']);
+
+        return $this->success(['portfolio' => $portfolio], 200);
+    }
+
     /**
      * Store a newly created resource in storage.
      */
@@ -45,9 +54,9 @@ class PortfolioController extends Controller
 
         Portfolio::create([
             'title' => $request->title,
-            'image' => 'portfolios/' . $image,
+            'image' => 'storage/portfolios/' . $image,
             'description' => $request->description,
-            'author' => $request->author
+            'author_id' => $request->author,
         ]);
 
         return $this->success(['message' => 'Portfolio successfully created'], 201);
@@ -64,7 +73,7 @@ class PortfolioController extends Controller
 
         $validate = Validator::make($request->all(), [
             'title' => 'required',
-            'image' => 'required|image',
+            'image' => 'image',
             'description' => 'required',
             'author' => 'boolean'
         ]);
@@ -74,7 +83,9 @@ class PortfolioController extends Controller
         $bannerImg = $portfolio->image;
 
         if ($request->hasFile('image')) {
-            Storage::delete($portfolio->image);
+            $path = str_replace('storage/', '', $portfolio->image);
+            Storage::delete('public/' . $path);
+
 
             $extension = $request->file('image')->getClientOriginalExtension();
             $image = time() . '.' . $extension;
@@ -85,14 +96,14 @@ class PortfolioController extends Controller
                 $image
             );
 
-            $bannerImg = 'portfolios/' . $image;
+            $bannerImg = 'storage/portfolios/' . $image;
         }
 
         $portfolio->update([
             'title' => $request->title,
             'image' => $bannerImg,
             'description' => $request->description,
-            'author' => $request->author
+            'author_id' => $request->author,
         ]);
 
         return $this->success(['message' => 'Portfolio successfully updated'], 201);
@@ -107,7 +118,8 @@ class PortfolioController extends Controller
 
         if (!$portfolio) return $this->notfound(['message' => 'Portfolio not found']);
 
-        Storage::delete($portfolio->image);
+        $path = str_replace('storage/', '', $portfolio->image);
+        Storage::delete('public/' . $path);
 
         $portfolio->delete();
 

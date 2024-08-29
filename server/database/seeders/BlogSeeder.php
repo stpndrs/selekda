@@ -15,28 +15,28 @@ class BlogSeeder extends Seeder
     {
         $blogs = [
             [
-                'image' => 'blog/images (1).jpg',
+                'image' => 'storage/blog/images (1).jpg',
                 'title' => 'Blog 1',
                 'description' => 'Description of blog 1',
                 'author_id' => 2,
                 'total_view' => 100,
             ],
             [
-                'image' => 'blog/images (2).jpg',
+                'image' => 'storage/blog/images (2).jpg',
                 'title' => 'Blog 2',
                 'description' => 'Description of blog 2',
                 'author_id' => 2,
                 'total_view' => 100,
             ],
             [
-                'image' => 'blog/images (3).jpg',
+                'image' => 'storage/blog/images (3).jpg',
                 'title' => 'Blog 3',
                 'description' => 'Description of blog 3',
                 'author_id' => 2,
                 'total_view' => 100,
             ],
             [
-                'image' => 'blog/images (4).jpg',
+                'image' => 'storage/blog/images (4).jpg',
                 'title' => 'Blog 4',
                 'description' => 'Description of blog 4',
                 'author_id' => 2,

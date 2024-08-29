@@ -44,7 +44,7 @@ class BannerController extends Controller
 
         Banner::create([
             'title' => $request->title,
-            'image' => 'banners/' . $image,
+            'image' => 'storage/banners/' . $image,
             'description' => $request->description,
             'status' => $request->status
         ]);
@@ -73,7 +73,8 @@ class BannerController extends Controller
         $bannerImg = $banner->image;
 
         if ($request->hasFile('image')) {
-            Storage::delete($banner->image);
+            $path = str_replace('storage/', '', $banner->image);
+            Storage::delete('public/' . $path);
 
             $extension = $request->file('image')->getClientOriginalExtension();
             $image = time() . '.' . $extension;
@@ -84,7 +85,7 @@ class BannerController extends Controller
                 $image
             );
 
-            $bannerImg = 'banners/' . $image;
+            $bannerImg = 'storage/banners/' . $image;
         }
 
         $banner->update([
@@ -106,7 +107,9 @@ class BannerController extends Controller
 
         if (!$banner) return $this->notfound(['message' => 'Banner not found']);
 
-        Storage::delete($banner->image);
+        $path = str_replace('storage/', '', $banner->image);
+        Storage::delete('public/' . $path);
+
 
         $banner->delete();
 

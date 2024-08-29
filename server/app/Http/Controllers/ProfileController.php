@@ -22,7 +22,9 @@ class ProfileController extends Controller
         $user = $findToken->tokenable;
 
         if ($request->hasFile('profile_picture')) {
-            Storage::delete($user->profile_picture);
+            $path = str_replace('storage/', '', $user->image);
+            Storage::delete('public/' . $path);
+
 
             $extension = $request->file('profile_picture')->getClientOriginalExtension();
             $profile_picture = time() . '.' . $extension;

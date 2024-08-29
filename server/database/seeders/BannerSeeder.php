@@ -16,19 +16,19 @@ class BannerSeeder extends Seeder
         $banners = [
             [
                 'title' => 'Banner 1',
-                'image' => 'banners/images (5).webp',
+                'image' => 'storage/banners/images (5).webp',
                 'description' => 'This is the banner 1',
                 'status' => true
             ],
             [
                 'title' => 'Banner 2',
-                'image' => 'banners/images (6).jpg',
+                'image' => 'storage/banners/images (6).jpg',
                 'description' => 'This is the banner 2',
                 'status' => true
             ],
             [
                 'title' => 'Banner 3',
-                'image' => 'banners/images (6).png',
+                'image' => 'storage/banners/images (6).png',
                 'description' => 'This is the banner 3',
                 'status' => true
             ],
