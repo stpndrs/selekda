@@ -3,6 +3,7 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BlogCommentsController;
 use App\Http\Controllers\BlogController;
+use App\Http\Controllers\CaptchaController;
 use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -32,12 +33,16 @@ Route::prefix('v1')->group(function () {
         Route::get('profile', 'index');
         Route::put('profile', 'update');
     });
-    Route::prefix('blog')->group(function() {
+    Route::prefix('blog')->group(function () {
         Route::prefix('comments')->middleware('auth:sanctum')->controller(BlogCommentsController::class)->group(function () {
             Route::get('/{blog_id}', 'index');
             Route::post('/{blog_id}', 'store');
             Route::put('/{blog_id}/{id}', 'update');
             Route::delete('/{blog_id}/{id}', 'delete');
         });
+    });
+    Route::prefix('captcha')->controller(CaptchaController::class)->group(function () {
+        Route::get('/', 'index');
+        Route::post('/verification', 'verification');
     });
 });
