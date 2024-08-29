@@ -22,7 +22,6 @@ return new class extends Migration
             $table->string('profile_picture')->nullable();
             $table->date('date');
             $table->enum('level', ['1', '2']);
-            $table->rememberToken();
             $table->timestamps();
         });
     }

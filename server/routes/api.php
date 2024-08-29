@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -24,5 +25,9 @@ Route::prefix('v1')->group(function () {
         Route::post('login', 'login');
         Route::post('register', 'register');
         Route::post('logout', 'logout')->middleware('admin');
+    });
+    Route::prefix('user')->middleware('auth:sanctum')->controller(UserController::class)->group(function () {
+        Route::get('profile', 'index');
+        Route::put('profile', 'update');
     });
 });

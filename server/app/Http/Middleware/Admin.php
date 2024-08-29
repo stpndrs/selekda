@@ -20,7 +20,7 @@ class Admin
         $findToken = PersonalAccessToken::findToken($request->bearerToken());
 
         if (!$findToken) {
-            return response()->json(['message' => 'Unauthorized'], 401);
+            return response()->json(['message' => 'Unauthenticated'], 401);
         }
 
         $user = $findToken->tokenable;
@@ -32,7 +32,7 @@ class Admin
                 return response()->json(['message' => 'Forbidden'], 403);
             }
         } else {
-            return response()->json(['message' => 'Unauthorized'], 404);
+            return response()->json(['message' => 'Unauthenticated'], 404);
         }
 
         return $next($request);

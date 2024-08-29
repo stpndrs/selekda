@@ -61,16 +61,24 @@ class AuthController extends Controller
             $profile_picture
         );
 
-        $request['profile_picture'] = $path . '/' . $profile_picture;
-
-        $user = User::create($request->all());
+        $user = User::create([
+            'name' => $request->name,
+            'username' => $request->username,
+            'email' => $request->email,
+            'password' => $request->password,
+            'date_of_birth' => $request->date_of_birth,
+            'phone_number' => $request->phone_number,
+            'date' => $request->date,
+            'profile_picture' => 'public/profile_picture/' . $profile_picture
+        ]);
 
         $token = $this->generateToken($user);
 
         return $this->success(['message' => 'Register success', 'token' => $token], 201);
     }
 
-    public function logout(Request $request) {
+    public function logout(Request $request)
+    {
         $token = PersonalAccessToken::findToken($request->bearerToken());
 
         if (!$token) return $this->notfound(['message' => 'Unauthenticated']);
