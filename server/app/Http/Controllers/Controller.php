@@ -21,4 +21,8 @@ class Controller extends BaseController
     public function failed($data, $code) {
         return response()->json($data, $code);
     }
+
+    public function notfound($data) {
+        return response()->json($data, 401);
+    }
 }

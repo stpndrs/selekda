@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Laravel\Sanctum\PersonalAccessToken;
 
 class AuthController extends Controller
 {
@@ -37,19 +38,45 @@ class AuthController extends Controller
     {
         $validate = Validator::make($request->all(), [
             'name' => 'required',
-            'username' => 'required|unique:user,username',
-            'email' => 'required|unique:user,email|email',
+            'username' => 'required|unique:users,username',
+            'email' => 'required|unique:users,email|email',
             'password' => 'required|min:5',
-            'date_of_birth' => 'date',
-            'phone_number' => 'number',
-            'profile_picture' => 'image',
+            'date_of_birth' => 'required|date',
+            'phone_number' => 'required',
+            'profile_picture' => 'required|image',
         ]);
 
         if ($validate->fails()) return $this->validateRes($validate->errors());
 
         $request['password'] = Hash::make($request->password);
-        $request['date'] = date('d-m-Y');
+        $request['date'] = date('Y-m-d');
+        $request['level'] = '2';
 
-        dd($request->file('profile_picture'));
+        $extension = $request->file('profile_picture')->getClientOriginalExtension();
+        $profile_picture = time() . '.' . $extension;
+        $path = 'public/profile_picture';
+
+        $request->file('profile_picture')->storeAs(
+            $path,
+            $profile_picture
+        );
+
+        $request['profile_picture'] = $path . '/' . $profile_picture;
+
+        $user = User::create($request->all());
+
+        $token = $this->generateToken($user);
+
+        return $this->success(['message' => 'Register success', 'token' => $token], 201);
+    }
+
+    public function logout(Request $request) {
+        $token = PersonalAccessToken::findToken($request->bearerToken());
+
+        if (!$token) return $this->notfound(['message' => 'Unauthenticated']);
+
+        $token->delete();
+
+        return $this->success(['message' => 'Logout success'], 200);
     }
 }
