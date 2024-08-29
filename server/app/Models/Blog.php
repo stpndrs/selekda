@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Blog extends Model
 {
     use HasFactory;
+    protected $guarded = ['id'];
+
+    public function comments() {
+        return $this->hasMany(BlogComment::class, 'blog_id', 'id');
+    }
 }

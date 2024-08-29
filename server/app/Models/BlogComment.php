@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class BlogComment extends Model
 {
     use HasFactory;
+
+    protected $guarded = ['id'];
+    protected $table = 'blog_comments';
+    
 }

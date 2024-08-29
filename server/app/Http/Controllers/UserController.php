@@ -13,7 +13,7 @@ class UserController extends Controller
         $findToken = PersonalAccessToken::findToken($request->bearerToken());
         $user = $findToken->tokenable;
 
-        return $this->success(['user' => $user], 200);
+        return $this->success(['items' => $user], 200);
     }
 
     public function update(Request $request)
@@ -38,6 +38,6 @@ class UserController extends Controller
 
         $user->update($request->all());
 
-        return $this->success(['message' => 'Update profile success', 'user' => $user], 201);
+        return $this->success(['message' => 'Update profile success', 'items' => $user], 201);
     }
 }

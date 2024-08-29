@@ -23,6 +23,10 @@ class Controller extends BaseController
     }
 
     public function notfound($data) {
-        return response()->json($data, 401);
+        return response()->json($data, 404);
+    }
+
+    public function forbidden() {
+        return response()->json(['message' => 'Forbidden access'], 403);
     }
 }
