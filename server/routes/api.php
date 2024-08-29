@@ -1,9 +1,12 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\BannerController;
 use App\Http\Controllers\BlogCommentsController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\CaptchaController;
+use App\Http\Controllers\PortfolioController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -29,7 +32,7 @@ Route::prefix('v1')->group(function () {
         Route::post('register', 'register');
         Route::post('logout', 'logout')->middleware('admin');
     });
-    Route::prefix('user')->middleware('auth:sanctum')->controller(UserController::class)->group(function () {
+    Route::prefix('user')->middleware('auth:sanctum')->controller(ProfileController::class)->group(function () {
         Route::get('profile', 'index');
         Route::put('profile', 'update');
     });
@@ -44,5 +47,11 @@ Route::prefix('v1')->group(function () {
     Route::prefix('captcha')->controller(CaptchaController::class)->group(function () {
         Route::get('/', 'index');
         Route::post('/verification', 'verification');
+    });
+    Route::middleware('admin')->group(function() {
+        Route::resource('banner', BannerController::class);
+        Route::resource('blog', BlogController::class);
+        Route::resource('portfolio', PortfolioController::class);
+        Route::resource('user', UserController::class);
     });
 });

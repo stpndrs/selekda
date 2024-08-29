@@ -2,16 +2,20 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Banner;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
-class BlogController extends Controller
+class BannerController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        //
+        $banners = Banner::all();
+
+        return $this->success(['banners' => $banners], 200);
     }
 
     /**
@@ -19,7 +23,13 @@ class BlogController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validate = Validator::make($request->all(), [
+            'title' => 'required',
+            'image' => 'required|image',
+            'description' => 'required',
+        ]);
+
+        if ($validate->fails()) return $this->validateRes($validate->errors());
     }
 
     /**
