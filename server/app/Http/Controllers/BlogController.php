@@ -16,7 +16,7 @@ class BlogController extends Controller
      */
     public function index()
     {
-        $blogs = Blog::all();
+        $blogs = Blog::with('author')->get();
 
         return $this->success(['blogs' => $blogs], 200);
     }
@@ -49,7 +49,7 @@ class BlogController extends Controller
 
         $blog = Blog::create([
             'title' => $request->title,
-            'image' => $path . '/' . $image,
+            'image' => 'blogs/' . $image,
             'description' => $request->description,
             'author_id' => $request->author,
         ]);
@@ -96,7 +96,7 @@ class BlogController extends Controller
                 $image
             );
 
-            $bannerImg = $path . '/' . $image;
+            $bannerImg = 'blogs/' . $image;
         }
 
         foreach ($blog->tags as $tag) {

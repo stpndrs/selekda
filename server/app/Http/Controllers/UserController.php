@@ -78,7 +78,7 @@ class UserController extends Controller
                 $profile_picture
             );
 
-            $request['profile_picture'] = $path . '/' . $profile_picture;
+            $request['profile_picture'] = 'profile_picture/' . $profile_picture;
         }
 
         $user->update($request->all());
@@ -86,7 +86,8 @@ class UserController extends Controller
         return $this->success(['message' => 'Update profile success', 'items' => $user], 201);
     }
 
-    public function delete($id) {
+    public function delete($id)
+    {
         $user = User::find($id);
 
         if (!$user) return $this->notfound(['message' => 'User not found']);

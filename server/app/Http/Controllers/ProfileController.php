@@ -33,7 +33,7 @@ class ProfileController extends Controller
                 $profile_picture
             );
 
-            $request['profile_picture'] = $path . '/' . $profile_picture;
+            $request['profile_picture'] = 'profile_picture/' . $profile_picture;
         }
 
         $user->update($request->all());

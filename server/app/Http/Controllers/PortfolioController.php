@@ -15,7 +15,7 @@ class PortfolioController extends Controller
      */
     public function index()
     {
-        $portfolios = Portfolio::all();
+        $portfolios = Portfolio::with('author')->get();
 
         return $this->success(['portfolios' => $portfolios], 200);
     }
@@ -45,7 +45,7 @@ class PortfolioController extends Controller
 
         Portfolio::create([
             'title' => $request->title,
-            'image' => $path . '/' . $image,
+            'image' => 'portfolios/' . $image,
             'description' => $request->description,
             'author' => $request->author
         ]);
@@ -85,7 +85,7 @@ class PortfolioController extends Controller
                 $image
             );
 
-            $bannerImg = $path . '/' . $image;
+            $bannerImg = 'portfolios/' . $image;
         }
 
         $portfolio->update([

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Leaderboard;
 use Illuminate\Http\Request;
 
 class LeaderboardController extends Controller
@@ -11,7 +12,12 @@ class LeaderboardController extends Controller
      */
     public function index()
     {
-        //
+        $leaderboard = Leaderboard::orderBy('score', 'asc')
+            ->orderBy('time', 'asc')
+            ->with('user')
+            ->get();
+
+        return $this->success(['leaderboard' => $leaderboard], 200);
     }
 
     /**

@@ -11,4 +11,14 @@ class BlogTag extends Model
 
     protected $guarded = ['id'];
     protected $table = 'blog_tags';
+
+    public function tag()
+    {
+        return $this->belongsTo(Tag::class, 'tag_id');
+    }
+
+    public function blog()
+    {
+        return $this->belongsTo(Blog::class, 'blog_id');
+    }
 }

@@ -44,7 +44,7 @@ class BannerController extends Controller
 
         Banner::create([
             'title' => $request->title,
-            'image' => $path . '/' . $image,
+            'image' => 'banners/' . $image,
             'description' => $request->description,
             'status' => $request->status
         ]);
@@ -63,7 +63,7 @@ class BannerController extends Controller
 
         $validate = Validator::make($request->all(), [
             'title' => 'required',
-            'image' => 'required|image',
+            'image' => 'image',
             'description' => 'required',
             'status' => 'boolean'
         ]);
@@ -84,7 +84,7 @@ class BannerController extends Controller
                 $image
             );
 
-            $bannerImg = $path . '/' . $image;
+            $bannerImg = 'banners/' . $image;
         }
 
         $banner->update([
