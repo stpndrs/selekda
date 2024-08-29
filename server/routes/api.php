@@ -5,6 +5,7 @@ use App\Http\Controllers\BannerController;
 use App\Http\Controllers\BlogCommentsController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\CaptchaController;
+use App\Http\Controllers\LeaderboardController;
 use App\Http\Controllers\PortfolioController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
@@ -53,5 +54,7 @@ Route::prefix('v1')->group(function () {
         Route::resource('blog', BlogController::class);
         Route::resource('portfolio', PortfolioController::class);
         Route::resource('user', UserController::class);
+        Route::get('leaderboard', [LeaderboardController::class, 'index']);
+        Route::post('leaderboard', [LeaderboardController::class, 'store']);
     });
 });

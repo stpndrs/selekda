@@ -22,7 +22,7 @@ class PortfolioSeeder extends Seeder
             ],
             [
                 'title' => 'Portfolio 2',
-                'image' => 'storage/portfolios/image (12).jpg',
+                'image' => 'storage/portfolios/image (17).jpg',
                 'description' => 'This portfolio was created by user2',
                 'author_id' => 3
             ],

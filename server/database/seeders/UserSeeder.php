@@ -23,7 +23,7 @@ class UserSeeder extends Seeder
                 'date_of_birth' => date('Y-m-d'),
                 'phone_number' => '08123456789',
                 'date' => date('Y-m-d'),
-                'profile_picture' => '',
+                'profile_picture' => 'storage/profile_pictures/images (13).jpg',
                 'level' => '1',
             ],
             [
@@ -34,7 +34,7 @@ class UserSeeder extends Seeder
                 'date_of_birth' => date('Y-m-d'),
                 'phone_number' => '08123456789',
                 'date' => date('Y-m-d'),
-                'profile_picture' => '',
+                'profile_picture' => 'storage/profile_pictures/images (13).jpg',
                 'level' => '2',
             ],
             [
@@ -45,7 +45,7 @@ class UserSeeder extends Seeder
                 'date_of_birth' => date('Y-m-d'),
                 'phone_number' => '08223456789',
                 'date' => date('Y-m-d'),
-                'profile_picture' => '',
+                'profile_picture' => 'storage/profile_pictures/images (13).jpg',
                 'level' => '2',
             ],
             [
@@ -56,7 +56,7 @@ class UserSeeder extends Seeder
                 'date_of_birth' => date('Y-m-d'),
                 'phone_number' => '08323456789',
                 'date' => date('Y-m-d'),
-                'profile_picture' => '',
+                'profile_picture' => 'storage/profile_pictures/images (13).jpg',
                 'level' => '2',
             ],
             [
@@ -67,7 +67,7 @@ class UserSeeder extends Seeder
                 'date_of_birth' => date('Y-m-d'),
                 'phone_number' => '08423456789',
                 'date' => date('Y-m-d'),
-                'profile_picture' => '',
+                'profile_picture' => 'storage/profile_pictures/images (13).jpg',
                 'level' => '2',
             ],
             [
@@ -78,7 +78,7 @@ class UserSeeder extends Seeder
                 'date_of_birth' => date('Y-m-d'),
                 'phone_number' => '08523456789',
                 'date' => date('Y-m-d'),
-                'profile_picture' => '',
+                'profile_picture' => 'storage/profile_pictures/images (13).jpg',
                 'level' => '2',
             ],
         ];

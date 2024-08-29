@@ -69,7 +69,7 @@ class AuthController extends Controller
             'date_of_birth' => $request->date_of_birth,
             'phone_number' => $request->phone_number,
             'date' => $request->date,
-            'profile_picture' => 'public/profile_picture/' . $profile_picture
+            'profile_picture' => 'storage/profile_picture/' . $profile_picture
         ]);
 
         $token = $this->generateToken($user);

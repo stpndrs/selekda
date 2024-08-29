@@ -53,18 +53,29 @@ class UserController extends Controller
             'date_of_birth' => $request->date_of_birth,
             'phone_number' => $request->phone_number,
             'date' => $request->date,
-            'profile_picture' => 'public/profile_picture/' . $profile_picture
+            'profile_picture' => 'storage/profile_picture/' . $profile_picture
         ]);
 
-        $token = $this->generateToken($user);
-
-        return $this->success(['message' => 'Register success', 'token' => $token], 201);
+        return $this->success(['message' => 'User successfully created'], 201);
     }
 
     public function update(Request $request, $id)
     {
-        $findToken = PersonalAccessToken::findToken($request->bearerToken());
-        $user = $findToken->tokenable;
+        $user = User::find($id);
+
+        if (!$user) return $this->notfound(['message' => 'User not found']);
+
+        $validate = Validator::make($request->all(), [
+            'name' => 'required',
+            'username' => 'required|unique:users,username',
+            'email' => 'required|unique:users,email|email',
+            'password' => 'min:5',
+            'date_of_birth' => 'required|date',
+            'phone_number' => 'required',
+            'profile_picture' => 'image',
+        ]);
+
+        if ($validate->fails()) return $this->validateRes($validate->errors());
 
         if ($request->hasFile('profile_picture')) {
             $path = str_replace('storage/', '', $user->image);
@@ -85,10 +96,10 @@ class UserController extends Controller
 
         $user->update($request->all());
 
-        return $this->success(['message' => 'Update profile success', 'items' => $user], 201);
+        return $this->success(['message' => 'User successfully updated'], 201);
     }
 
-    public function delete($id)
+    public function destroy($id)
     {
         $user = User::find($id);
 

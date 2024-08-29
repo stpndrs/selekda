@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Leaderboard;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class LeaderboardController extends Controller
 {
@@ -13,7 +14,7 @@ class LeaderboardController extends Controller
     public function index()
     {
         $leaderboard = Leaderboard::orderBy('score', 'asc')
-            ->orderBy('time', 'asc')
+            ->orderBy('remaining_time', 'asc')
             ->with('user')
             ->get();
 
@@ -25,30 +26,16 @@ class LeaderboardController extends Controller
      */
     public function store(Request $request)
     {
-        //
-    }
+        $validate = Validator::make($request->all(), [
+            'score' => 'required|integer',
+            'remaining_time' => 'required|integer',
+            'user_id' => 'required',
+        ]);
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
+        if ($validate->fails()) return $this->validateRes($validate->errors());
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
+        Leaderboard::create($request->all());
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
+        return $this->success(['message' => 'Score has been saved'], 201);
     }
 }
