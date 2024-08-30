@@ -51,13 +51,13 @@
                 <button id="btn-close" onclick="closeNavbar()">X</button>
                 <ul>
                     <li>
-                        <a href="index.html" class="active">Home</a>
+                        <a href="index.html">Home</a>
                     </li>
                     <li>
-                        <a href="blog.html">Blog</a>
+                        <a href="blog.html" class="active">Blog</a>
                     </li>
                     <li>
-                        <a href="portfolio.html" class="active">Portfolio</a>
+                        <a href="portfolio.html">Portfolio</a>
                     </li>
                     <li>
                         <a href="#" class="btn btn-navy">Login</a>
@@ -68,89 +68,112 @@
     </nav>
     <!-- /Navbar -->
     <!-- Header -->
-    <header id="portfolio">
+    <header id="blog">
         <div class="container">
             <h1>Webtech <span class="c-red">Blog</span></h1>
         </div>
     </header>
     <!-- /Header -->
     <main>
-        <!-- Portfolio Section -->
-        <section id="portfolio">
-            <div class="modal" id="modal">
-                <div class="modal-container">
-                    <div class="modal-header">
-                        <h3>Tes</h3>
-                        <button id="btn-close" onclick="closeModal('modal')">X</button>
-                    </div>
-                    <div class="modal-body">
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta, quis nesciunt, repellendus
-                            dicta facere unde a corrupti, et laborum nobis voluptatum aliquid possimus suscipit mollitia
-                            rem sunt. Nisi delectus reiciendis facere, iusto nulla, ducimus, dignissimos distinctio sunt
-                            enim accusamus odit perferendis nostrum commodi.</p>
-                    </div>
-                </div>
-            </div>
+        <!-- Blog Section -->
+        <section id="blog">
             <div class="container">
-                <div class="portfolio-container">
-                    <div class="portfolio-item">
-                        <div class="portfolio-item-image">
-                            <img src="./sources/image/images (15).jpg" alt="Image">
+                <div class="blog-container">
+                    <div class="col">
+                        <div class="popular">
+                            <h2 class="blog-aside-title">POPULAR BLOG</h2>
+                            <ul>
+                                <li><a href="#">Lorem ipsum dolor sit amet.</a></li>
+                                <li><a href="#">Lorem ipsum dolor sit amet.</a></li>
+                                <li><a href="#">Lorem ipsum dolor sit amet.</a></li>
+                                <li><a href="#">Lorem ipsum dolor sit amet.</a></li>
+                                <li><a href="#">Lorem ipsum dolor sit amet.</a></li>
+                            </ul>
                         </div>
-                        <div class="portfolio-item-body">
-                            <h2 class="portfolio-item-title">Lorem ipsum dolor sit amet.</h2>
-                            <p class="portfolio-item-identity">Crafted by <span class="author">Stevan Andreas</span> |
-                                <span class="date">29/08/2024</span> | <span class="views">24</span> views | <span
-                                    class="comments">0</span> Comments
-                            </p>
-                            <p class="mb-15">Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore
-                                consectetur neque enim in? Quo dicta omnis eos iusto voluptate, officia iste quod, nihil
-                                tenetur nobis reiciendis iure velit quis expedita cum veritatis tempora! Assumenda
-                                architecto, maxime unde dignissimos dolores sit explicabo doloremque natus numquam nisi
-                                reprehenderit libero hic accusamus ipsum?</p>
-                            <button class="btn btn-red" onclick="openModal('modal')">See Detail</button>
+                        <div class="categories">
+                            <h2 class="blog-aside-title">CATEGORIES</h2>
+                            <ul>
+                                <li><a href="#">Lorem ipsum dolor sit amet.</a></li>
+                                <li><a href="#">Lorem ipsum dolor sit amet.</a></li>
+                                <li><a href="#">Lorem ipsum dolor sit amet.</a></li>
+                                <li><a href="#">Lorem ipsum dolor sit amet.</a></li>
+                                <li><a href="#">Lorem ipsum dolor sit amet.</a></li>
+                            </ul>
                         </div>
-                    </div>
-                    <div class="portfolio-item">
-                        <div class="portfolio-item-image">
-                            <img src="./sources/image/images (15).jpg" alt="Image">
-                        </div>
-                        <div class="portfolio-item-body">
-                            <h2 class="portfolio-item-title">Lorem ipsum dolor sit amet.</h2>
-                            <p class="portfolio-item-identity">Crafted by <span class="author">Stevan Andreas</span> |
-                                <span class="date">29/08/2024</span> | <span class="views">24</span> views | <span
-                                    class="comments">0</span> Comments
-                            </p>
-                            <p class="mb-15">Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore
-                                consectetur neque enim in? Quo dicta omnis eos iusto voluptate, officia iste quod, nihil
-                                tenetur nobis reiciendis iure velit quis expedita cum veritatis tempora! Assumenda
-                                architecto, maxime unde dignissimos dolores sit explicabo doloremque natus numquam nisi
-                                reprehenderit libero hic accusamus ipsum?</p>
-                            <button class="btn btn-red" onclick="openModal('modal')">See Detail</button>
+                        <div class="tag-clouds">
+                            <h2 class="blog-aside-title">TAG CLOUDS</h2>
+                            <div class="tag-clouds-container">
+                                <div class="tag-clouds-item"><a href="#" class="btn btn-red">Lorem</a></div>
+                                <div class="tag-clouds-item"><a href="#" class="btn btn-red">Lorem</a></div>
+                                <div class="tag-clouds-item"><a href="#" class="btn btn-red">Lorem</a></div>
+                                <div class="tag-clouds-item"><a href="#" class="btn btn-red">Lorem</a></div>
+                                <div class="tag-clouds-item"><a href="#" class="btn btn-red">Lorem</a></div>
+                            </div>
                         </div>
                     </div>
-                    <div class="portfolio-item">
-                        <div class="portfolio-item-image">
-                            <img src="./sources/image/images (15).jpg" alt="Image">
+                    <div class="col">
+                        <div class="blog-item">
+                            <div class="blog-item-image">
+                                <img src="./sources/image/images (15).jpg" alt="Image">
+                            </div>
+                            <div class="blog-item-body">
+                                <a class="blog-item-title" href="blog-detail.html">Lorem ipsum dolor sit amet.</a>
+                                <p class="blog-item-identity">Crafted by <span class="author">Stevan Andreas</span> |
+                                    <span class="date">29/08/2024</span> | <span class="views">24</span> views | <span
+                                        class="comments">0</span> Comments
+                                </p>
+                                <p class="mb-15">Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore
+                                    consectetur neque enim in? Quo dicta omnis eos iusto voluptate, officia iste quod,
+                                    nihil
+                                    tenetur nobis reiciendis iure velit quis expedita cum veritatis tempora! Assumenda
+                                    architecto, maxime unde dignissimos dolores sit explicabo doloremque natus numquam
+                                    nisi
+                                    reprehenderit libero hic accusamus ipsum?</p>
+                            </div>
                         </div>
-                        <div class="portfolio-item-body">
-                            <h2 class="portfolio-item-title">Lorem ipsum dolor sit amet.</h2>
-                            <p class="portfolio-item-identity">Crafted by <span class="author">Stevan Andreas</span> |
-                                <span class="date">29/08/2024</span> | <span class="views">24</span> views | <span
-                                    class="comments">0</span> Comments
-                            </p>
-                            <p class="mb-15">Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore
-                                consectetur neque enim in? Quo dicta omnis eos iusto voluptate, officia iste quod, nihil
-                                tenetur nobis reiciendis iure velit quis expedita cum veritatis tempora! Assumenda
-                                architecto, maxime unde dignissimos dolores sit explicabo doloremque natus numquam nisi
-                                reprehenderit libero hic accusamus ipsum?</p>
-                            <button class="btn btn-red" onclick="openModal('modal')">See Detail</button>
+                        <div class="blog-item">
+                            <div class="blog-item-image">
+                                <img src="./sources/image/images (15).jpg" alt="Image">
+                            </div>
+                            <div class="blog-item-body">
+                                <a class="blog-item-title" href="blog-detail.html">Lorem ipsum dolor sit amet.</a>
+                                <p class="blog-item-identity">Crafted by <span class="author">Stevan Andreas</span> |
+                                    <span class="date">29/08/2024</span> | <span class="views">24</span> views | <span
+                                        class="comments">0</span> Comments
+                                </p>
+                                <p class="mb-15">Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore
+                                    consectetur neque enim in? Quo dicta omnis eos iusto voluptate, officia iste quod,
+                                    nihil
+                                    tenetur nobis reiciendis iure velit quis expedita cum veritatis tempora! Assumenda
+                                    architecto, maxime unde dignissimos dolores sit explicabo doloremque natus numquam
+                                    nisi
+                                    reprehenderit libero hic accusamus ipsum?</p>
+                            </div>
+                        </div>
+                        <div class="blog-item">
+                            <div class="blog-item-image">
+                                <img src="./sources/image/images (15).jpg" alt="Image">
+                            </div>
+                            <div class="blog-item-body">
+                                <a class="blog-item-title" href="blog-detail.html">Lorem ipsum dolor sit amet.</a>
+                                <p class="blog-item-identity">Crafted by <span class="author">Stevan Andreas</span> |
+                                    <span class="date">29/08/2024</span> | <span class="views">24</span> views | <span
+                                        class="comments">0</span> Comments
+                                </p>
+                                <p class="mb-15">Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore
+                                    consectetur neque enim in? Quo dicta omnis eos iusto voluptate, officia iste quod,
+                                    nihil
+                                    tenetur nobis reiciendis iure velit quis expedita cum veritatis tempora! Assumenda
+                                    architecto, maxime unde dignissimos dolores sit explicabo doloremque natus numquam
+                                    nisi
+                                    reprehenderit libero hic accusamus ipsum?</p>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
-        <!-- /Portfolio Section -->
+        <!-- /Blog Section -->
     </main>
 
     <!-- Footer -->

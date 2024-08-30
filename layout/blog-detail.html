@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebTech ID</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav>
+        <div class="container">
+            <div class="nav-container">
+                <div class="nav-item">
+                    <a href="index.html">
+                        <img src="./sources/image/logo.png" alt="Logo">
+                    </a>
+                </div>
+                <div class="nav-item">
+                    <ul>
+                        <li>
+                            <a href="index.html">Home</a>
+                        </li>
+                        <li>
+                            <a href="blog.html" class="active">Blog</a>
+                        </li>
+                        <li>
+                            <a href="portfolio.html">Portfolio</a>
+                        </li>
+                        <li>
+                            <a href="#" class="btn btn-navy">Login</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="nav-item" onclick="openNavbar()">
+                    <div class="burger">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <nav id="mobile">
+        <div class="container">
+            <div class="nav-item">
+                <button id="btn-close" onclick="closeNavbar()">X</button>
+                <ul>
+                    <li>
+                        <a href="index.html">Home</a>
+                    </li>
+                    <li>
+                        <a href="blog.html" class="active">Blog</a>
+                    </li>
+                    <li>
+                        <a href="portfolio.html">Portfolio</a>
+                    </li>
+                    <li>
+                        <a href="#" class="btn btn-navy">Login</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- /Navbar -->
+    <!-- Header -->
+    <header id="blog">
+        <div class="container">
+            <h1>Webtech <span class="c-red">Blog</span></h1>
+        </div>
+    </header>
+    <!-- /Header -->
+    <main>
+        <!-- Blog Section -->
+        <section id="blog">
+            <div class="container">
+                <div class="blog-container">
+                        <div class="blog-item">
+                            <div class="blog-item-image">
+                                <img src="./sources/image/images (15).jpg" alt="Image">
+                            </div>
+                            <div class="blog-item-body">
+                                <h2 class="blog-item-title">Lorem ipsum dolor sit amet.</h2>
+                                <p class="blog-item-identity">Crafted by <span class="author">Stevan Andreas</span> |
+                                    <span class="date">29/08/2024</span> | <span class="views">24</span> views | <span
+                                        class="comments">0</span> Comments
+                                </p>
+                                <p class="mb-15">Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore
+                                    consectetur neque enim in? Quo dicta omnis eos iusto voluptate, officia iste quod,
+                                    nihil
+                                    tenetur nobis reiciendis iure velit quis expedita cum veritatis tempora! Assumenda
+                                    architecto, maxime unde dignissimos dolores sit explicabo doloremque natus numquam
+                                    nisi
+                                    reprehenderit libero hic accusamus ipsum?</p>
+                            </div>
+                        </div>
+                </div>
+            </div>
+        </section>
+        <!-- /Blog Section -->
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="socials">
+            <a href="#"><img src="./sources/socials/instagram.png" alt="Instagram Icon"></a>
+            <a href="#"><img src="./sources/socials/fb.png" alt="Facebook Icon"></a>
+            <a href="#"> <img src="./sources/socials/youtube.png" alt="Youtube Icon"></a>
+        </div>
+        <div class="copyright">
+            <p>Copyright @WebtechID 2024 | Designer by : Stevan Andreas</p>
+        </div>
+    </footer>
+    <!-- /Footer -->
+
+    <script src="script.js"></script>
+</body>
+
+</html>
