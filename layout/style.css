@@ -218,7 +218,7 @@ body {
 
 .gallery-item {
     background-color: #fff;
-    border-radius: 10px;
+    border-radius: 5px;
     overflow: hidden;
     display: flex;
     align-items: center;
@@ -259,7 +259,7 @@ body {
 
 /* About */
 #about {
-    background-color: #8B0000;
+    background-color: var(--red);
     padding: 50px 0;
     position: relative;
 }
@@ -290,15 +290,6 @@ body {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     transform: translateY(120px);
     /* Menurunkan gambar ke bawah */
-}
-
-.text-center {
-    color: #FFFFFF;
-    font-size: 24px;
-    font-weight: bold;
-    text-align: center;
-    flex-grow: 1;
-    margin: 0 20px;
 }
 
 .text-center {
@@ -502,36 +493,116 @@ footer img {
 }
 
 
+@media screen and (max-width: 768px) {
+    nav {
+        padding: 10px;
+    }
 
+    nav .nav-item:nth-child(2) {
+        display: none;
+    }
 
+    nav#mobile {
+        position: fixed;
+        height: 100%;
+        width: 80%;
+        left: 65px;
+        top: 0;
+    }
 
-@media screen and (max-width: 768px) {}
+    nav#mobile ul {
+        flex-direction: column;
+        text-align: right;
+        justify-content: end;
+        align-items: end;
+        gap: 20px;
+    }
+
+    .nav-item a {
+        font-size: medium;
+    }
+
+    .burger {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        width: 40px;
+        height: 40px;
+        background-color: var(--red);
+        border-radius: 100%;
+    }
+
+    .burger span {
+        border-bottom: 1.5px solid white;
+        margin-top: 2px;
+        margin-bottom: 2px;
+        width: 45%;
+    }
+}
 
 @media screen and (max-width: 320px) {
     .container {
         padding: 10px 20px;
     }
+
+    .gallery-container {
+        display: block;
+    }
+
+    .gallery-item {
+        margin-bottom: 10px;
+    }
+
+    .about-container {
+        flex-direction: column;
+    }
+
+    .news-container {
+        flex-direction: column;
+    }
+
+    .news-title {
+        position: absolute;
+        bottom: 20px;
+        left: 20px;
+        width: 60%;
+        padding: 10px 20px;
+        background-color: #730000a1;
+        font-size: small;
+    }
+
+    #news .see {
+        margin-top: 50px;
+        margin-left: 50%;
+        transform: translate(-50%, 0);
+        width: 50%;
+    }
+
+    .services-item {
+        flex-direction: column;
+        padding: 15px !important;
+    }
+
+    .services-item-title,
+    .services-item-description {
+        width: auto;
+    }
+
+    .portfolio-item {
+        flex-direction: column;
+    }
+
     .testimonials-container {
         flex-direction: column;
     }
 
     .testimonials-item {
-        background-color: var(--red);
-        opacity: .5;
-        padding: 10px 20px;
-        border-radius: 5px;
-        color: white;
-        text-align: center;
         width: auto;
         height: 250px;
-        transition: all .5s;
-        cursor: pointer;
     }
-    
+
     .testimonials-item.active {
-        height: unset;
-        opacity: unset;
-        transition: all .5s;
         transform: unset;
     }
 
