@@ -2520,140 +2520,140 @@
 									]
 								}
 							]
-						},
+						}
+					]
+				},
+				{
+					"name": "leaderboard",
+					"item": [
 						{
-							"name": "leaderboard",
+							"name": "get",
 							"item": [
 								{
-									"name": "get",
-									"item": [
-										{
-											"name": "success",
-											"request": {
-												"method": "GET",
-												"header": [],
-												"url": {
-													"raw": "{{endpoint}}/api/v1/leaderboard",
-													"host": [
-														"{{endpoint}}"
-													],
-													"path": [
-														"api",
-														"v1",
-														"leaderboard"
-													]
-												}
-											},
-											"response": []
-										},
-										{
-											"name": "unauthenticated",
-											"request": {
-												"auth": {
-													"type": "noauth"
-												},
-												"method": "GET",
-												"header": [],
-												"url": {
-													"raw": "{{endpoint}}/api/v1/leaderboard",
-													"host": [
-														"{{endpoint}}"
-													],
-													"path": [
-														"api",
-														"v1",
-														"leaderboard"
-													]
-												}
-											},
-											"response": []
+									"name": "success",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{endpoint}}/api/v1/leaderboard",
+											"host": [
+												"{{endpoint}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"leaderboard"
+											]
 										}
-									]
+									},
+									"response": []
 								},
 								{
-									"name": "save score",
-									"item": [
-										{
-											"name": "success",
-											"request": {
-												"method": "POST",
-												"header": [],
-												"body": {
-													"mode": "formdata",
-													"formdata": [
-														{
-															"key": "score",
-															"value": "12",
-															"type": "text"
-														},
-														{
-															"key": "remaining_time",
-															"value": "20",
-															"type": "text"
-														},
-														{
-															"key": "user_id",
-															"value": "4",
-															"type": "text"
-														}
-													]
-												},
-												"url": {
-													"raw": "{{endpoint}}/api/v1/leaderboard",
-													"host": [
-														"{{endpoint}}"
-													],
-													"path": [
-														"api",
-														"v1",
-														"leaderboard"
-													]
-												}
-											},
-											"response": []
+									"name": "unauthenticated",
+									"request": {
+										"auth": {
+											"type": "noauth"
 										},
-										{
-											"name": "invalid field",
-											"request": {
-												"method": "POST",
-												"header": [],
-												"url": {
-													"raw": "{{endpoint}}/api/v1/leaderboard",
-													"host": [
-														"{{endpoint}}"
-													],
-													"path": [
-														"api",
-														"v1",
-														"leaderboard"
-													]
-												}
-											},
-											"response": []
-										},
-										{
-											"name": "unauthenticated",
-											"request": {
-												"auth": {
-													"type": "noauth"
-												},
-												"method": "POST",
-												"header": [],
-												"url": {
-													"raw": "{{endpoint}}/api/v1/leaderboard",
-													"host": [
-														"{{endpoint}}"
-													],
-													"path": [
-														"api",
-														"v1",
-														"leaderboard"
-													]
-												}
-											},
-											"response": []
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{endpoint}}/api/v1/leaderboard",
+											"host": [
+												"{{endpoint}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"leaderboard"
+											]
 										}
-									]
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "save score",
+							"item": [
+								{
+									"name": "success",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "formdata",
+											"formdata": [
+												{
+													"key": "score",
+													"value": "12",
+													"type": "text"
+												},
+												{
+													"key": "remaining_time",
+													"value": "20",
+													"type": "text"
+												},
+												{
+													"key": "user_id",
+													"value": "4",
+													"type": "text"
+												}
+											]
+										},
+										"url": {
+											"raw": "{{endpoint}}/api/v1/leaderboard",
+											"host": [
+												"{{endpoint}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"leaderboard"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "invalid field",
+									"request": {
+										"method": "POST",
+										"header": [],
+										"url": {
+											"raw": "{{endpoint}}/api/v1/leaderboard",
+											"host": [
+												"{{endpoint}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"leaderboard"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "unauthenticated",
+									"request": {
+										"auth": {
+											"type": "noauth"
+										},
+										"method": "POST",
+										"header": [],
+										"url": {
+											"raw": "{{endpoint}}/api/v1/leaderboard",
+											"host": [
+												"{{endpoint}}"
+											],
+											"path": [
+												"api",
+												"v1",
+												"leaderboard"
+											]
+										}
+									},
+									"response": []
 								}
 							]
 						}
