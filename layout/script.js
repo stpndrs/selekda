@@ -18,7 +18,9 @@ function plusSlides(n) {
     showSlides(slideIndex + n);
 }
 
+showSlides(slideIndex);
 
 setInterval(() => {
+    slideIndex++;
     showSlides(slideIndex);
-}, 1000);
+}, 3000);

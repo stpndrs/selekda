@@ -32,7 +32,7 @@ body {
 }
 
 .container {
-    padding: 0 5rem;
+    padding: 0 20rem;
 }
 
 .btn {
@@ -43,6 +43,8 @@ body {
     padding: 10px 30px;
     font-size: 1rem;
     border-radius: .25rem;
+    border: unset;
+    outline: none;
 }
 
 .btn-red {
@@ -59,6 +61,8 @@ body {
     background-color: var(--navy);
     color: white !important;
 }
+
+/* Nav */
 
 nav {
     width: 100%;
@@ -85,7 +89,7 @@ nav {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 30px;
+    gap: 55px;
     margin: 0;
     padding: 0;
 }
@@ -111,10 +115,11 @@ nav {
     color: var(--red);
 }
 
+/* Slider */
+
 .slider {
     position: relative;
-    max-width: 800px;
-    margin: 100px auto;
+    max-width: 100%;
     overflow: hidden;
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
@@ -143,14 +148,12 @@ nav {
     width: 40px;
     height: 40px;
     margin-top: -20px;
-    color: white;
+    color: var(--yellow);
     font-weight: bold;
-    font-size: 24px;
+    font-size: 50px;
     border-radius: 50%;
-    background-color: rgba(0, 0, 0, 0.5);
     text-align: center;
     line-height: 40px;
-    transition: background-color 0.3s ease;
 }
 
 .prev {
@@ -164,4 +167,168 @@ nav {
 .prev:hover,
 .next:hover {
     background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* Section */
+section {
+    margin-top: 10rem;
+}
+
+/* Gallery */
+#gallery {
+    width: 100%;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+}
+
+.gallery-container {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 10px;
+    padding: 20px;
+}
+
+.gallery-item {
+    background-color: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.gallery-container .item1 {
+    grid-column: 1 / span 2;
+    grid-row: 1 / span 2;
+}
+
+.gallery-container .item2 {
+    grid-column: 3 / span 2;
+    grid-row: 1 / 2;
+}
+
+.gallery-container .item3 {
+    grid-column: 5 / span 2;
+    grid-row: 1 / 2;
+}
+
+.gallery-container .item4 {
+    grid-column: 3 / span 2;
+    grid-row: 2 / 3;
+}
+
+.gallery-container .item5 {
+    grid-column: 5 / span 2;
+    grid-row: 2 / 3;
+}
+
+/* About */
+#about {
+    background-color: #8B0000;
+    padding: 50px 0;
+    position: relative;
+}
+
+.about-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    position: relative;
+}
+
+.image-left {
+    width: 200px;
+    height: auto;
+    border: 2px solid #FFD700;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transform: translateY(-120px);
+    /* Mengangkat gambar ke atas */
+}
+
+.image-right {
+    width: 200px;
+    height: auto;
+    border: 2px solid #FFD700;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transform: translateY(120px);
+    /* Menurunkan gambar ke bawah */
+}
+
+.text-center {
+    color: #FFFFFF;
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    flex-grow: 1;
+    margin: 0 20px;
+}
+
+.text-center {
+    color: #FFFFFF;
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    flex-grow: 1;
+    margin: 0 20px;
+}
+
+/* News */
+.news-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.news-item {
+    position: relative;
+}
+
+.news-image img {
+    width: 100%;
+}
+
+.news-title {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    width: 60%;
+    padding: 10px 20px;
+    background-color: var(--red);
+    font-size: large;
+}
+
+.news-title a {
+    color: white;
+    font-weight: bold;
+    text-decoration: none;
+    transition: all .2s;
+}
+
+.news-title a:hover {
+    transition: all .2s;
+    padding: 20px;
+}
+
+#news .see {
+    margin-top: 50px;
+    margin-left: 50%;
+    transform: translate(-50%, 0);
+    width: 30%;
 }
