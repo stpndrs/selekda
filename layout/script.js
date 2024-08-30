@@ -1,3 +1,4 @@
+// Slider JS
 let slideIndex = 0;
 const slides = document.querySelector('.slides');
 const totalSlides = document.querySelectorAll('.slide').length;
@@ -24,3 +25,13 @@ setInterval(() => {
     slideIndex++;
     showSlides(slideIndex);
 }, 3000);
+
+// Testimonials JS
+let testimonialItems = Array.from(document.getElementsByClassName('testimonials-item'))
+
+testimonialItems.forEach(element => {
+    element.addEventListener('click', function () {
+        document.getElementsByClassName('testimonials-item active')[0].classList.remove('active')
+        this.classList.add('active')
+    })
+});
