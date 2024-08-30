@@ -48,3 +48,11 @@ function openNavbar() {
         document.getElementById('mobile').style.left = '65px'
     }
 }
+
+// Modal toggle
+function closeModal(id) {
+    document.getElementById(id).classList.remove('active')
+}
+function openModal(id) {
+    document.getElementById(id).classList.add('active')
+}
