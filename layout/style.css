@@ -599,6 +599,19 @@ header#blog {
     text-decoration: underline;
 }
 
+.tag-blog-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.tag-blog-item {
+    margin-bottom: 10px;
+    padding: 5px 40px;
+    border: 1px solid var(--red);
+    border-radius: 50px;
+}
+
 .tag-clouds-container {
     display: flex;
     flex-wrap: wrap;
@@ -625,13 +638,74 @@ header#blog {
     padding: 0;
     font-size: 30px;
     text-decoration: none;
-    font-weight: bold ;
+    font-weight: bold;
 }
 
 .blog-item-identity {
     font-size: small;
     color: var(--navy);
     margin: 0;
+}
+
+/* Comment */
+.comment-item {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.303);
+    margin-bottom: 30px;
+}
+
+.comment-item-header {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    gap: 10px;
+}
+
+.comment-item-header img {
+    width: 5%;
+    border-radius: 100%;
+}
+
+.comment-item-header h3 {
+    margin: 0;
+    color: var(--yellow);
+}
+
+/* Comment */
+.comment-fields-container {
+    width: 100%;
+}
+
+.comment-fields-container input,
+.comment-fields-container textarea {
+    padding: 10px 20px;
+    border: 1px solid var(--red);
+    width: 100%;
+    outline: 0;
+    margin-bottom: 10px;
+}
+
+.comment-fields-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.comment-fields-container .captcha {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    gap: 10px;
+}
+
+.comment-fields-container .captcha .captcha-key {
+    padding: 10px 30px;
+    background-color: var(--red);
+    color: white;
+}
+
+.comment-fields-container .captcha .captcha-value {
+    margin: 0;
+    width: 50%;
 }
 
 
@@ -862,7 +936,8 @@ footer img {
         width: auto;
     }
 
-    header#portfolio, header#blog {
+    header#portfolio,
+    header#blog {
         padding: 5rem;
         color: var(--yellow) !important;
         text-align: center;
@@ -886,6 +961,20 @@ footer img {
     }
 
     .blog-container .col:nth-child(1) {
+        width: 100%;
+    }
+
+    .comment-fields-footer {
+        flex-direction: column;
+    }
+
+    .comment-fields-container .captcha {
+        flex-direction: column;
+        margin-bottom: 10px;
+    }
+
+    .comment-fields-container .captcha .captcha-value {
+        margin: 0;
         width: 100%;
     }
 
