@@ -35,3 +35,16 @@ testimonialItems.forEach(element => {
         this.classList.add('active')
     })
 });
+
+// Navbar toggle
+function closeNavbar() {
+    document.getElementById('mobile').style.left = '6500px'
+}
+function openNavbar() {
+    const mediaQuery = window.matchMedia('(min-width: 768px)');
+    if (mediaQuery.matches) {
+        document.getElementById('mobile').style.left = '390px'
+    } else {
+        document.getElementById('mobile').style.left = '65px'
+    }
+}
