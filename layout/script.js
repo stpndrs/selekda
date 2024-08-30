@@ -18,5 +18,7 @@ function plusSlides(n) {
     showSlides(slideIndex + n);
 }
 
-// Inisialisasi slide pertama
-showSlides(slideIndex);
+
+setInterval(() => {
+    showSlides(slideIndex);
+}, 1000);
